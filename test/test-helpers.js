@@ -8,6 +8,7 @@ function makeAuthHeader(user, secret = process.env.JWT_SECRET) {
         subject: user.user_name,
         algorithm: 'HS256',
     })
+    console.log(token)
     return `Bearer ${token}`
 }
 
@@ -252,7 +253,6 @@ function makeMenuFixtures() {
     const testUsers = makeUsersArray()
     const testMenuItems = makeMenuArray(testUsers)
     const testReviews = makeReviewsArray(testUsers, testMenuItems)
-    console.log('in test helper',testMenuItems)
     return {
         testUsers,
         testMenuItems,

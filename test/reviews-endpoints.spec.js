@@ -2,15 +2,14 @@ const knex = require('knex')
 const app = require('../src/app')
 const helpers = require('./test-helpers')
 
-describe.only('Reviews Endpoints', function () {
+describe('Reviews Endpoints', function () {
   let db
 
   const {
-    testMenu,
+    testMenuItems,
     testUsers,
   } = helpers.makeMenuFixtures()
 
-  console.log(testMenu)
 
   before('make knex instance', () => {
     db = knex({
@@ -31,13 +30,13 @@ describe.only('Reviews Endpoints', function () {
       helpers.seedMenuTables(
         db,
         testUsers,
-        testMenu,
+        testMenuItems,
       )
     )
 
-    it(`creates a review, responding with 201 and the new review`, function () {
+    it.only(`creates a review, responding with 201 and the new review`, function () {
       this.retries(3)
-      const testMenuItem = testMenu[0]
+      const testMenuItem = testMenuItems[0]
       const testUser = testUsers[0]
       const newReview = {
         text: 'Test new review',
@@ -47,7 +46,7 @@ describe.only('Reviews Endpoints', function () {
       }
       return supertest(app)
         .post('/reviews')
-        .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
+        // .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
         .send(newReview)
         .expect(201)
         .expect(res => {
@@ -85,26 +84,26 @@ describe.only('Reviews Endpoints', function () {
 
     const requiredFields = ['text', 'rating', 'menu_item_id']
 
-    // requiredFields.forEach(field => {
-    //   const testMenuItem = testMenu[0]
-    //   const testUser = testUsers[0]
-    //   const newReview = {
-    //     rating: 2,
-    //     text: 'Test new review',
-    //     menu_item_id: testMenuItem.id,
-    //   }
+    requiredFields.forEach(field => {
+      const testMenuItem = testMenuItems[0]
+      const testUser = testUsers[0]
+      const newReview = {
+        rating: 2,
+        text: 'Test new review',
+        menu_item_id: testMenuItem.id,
+      }
 
-    //   it(`responds with 400 and an error message when the '${field}' is missing`, () => {
-    //     delete newReview[field]
+      it(`responds with 400 and an error message when the '${field}' is missing`, () => {
+        delete newReview[field]
 
-    //     return supertest(app)
-    //       .post('/reviews')
-    //       .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
-    //       .send(newReview)
-    //       .expect(400, {
-    //         error: `Missing '${field}' in request body`,
-    //       })
-    //   })
-    // })
+        return supertest(app)
+          .post('/reviews')
+          // .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
+          .send(newReview)
+          .expect(400, {
+            error: `Missing '${field}' in request body`,
+          })
+      })
+    })
   })
 })
