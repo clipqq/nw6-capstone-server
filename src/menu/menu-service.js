@@ -72,7 +72,7 @@ const MenuService = {
     return {
       id: menuItemData.id,
       title: xss(menuItemData.title),
-      content: xss(menuItemData.content),
+      description: xss(menuItemData.description),
       date_created: menuItemData.date_created,
       image: menuItemData.image,
       user: menuItemData.user || {},

@@ -1,15 +1,7 @@
 const app = require('../src/app')
 const knex = require('knex')
+const helpers = require('./test-helpers')
 
-function cleanTables(db) {
-  return db.raw(
-    `TRUNCATE
-    fuudi_menu,
-    fuudi_users,
-    fuudi_reviews
-    RESTART IDENTITY CASCADE;`
-  )
-}
 
 describe('app', () => {
   let db
@@ -24,9 +16,9 @@ describe('app', () => {
 
   after('disconnect from db', () => db.destroy())
 
-  before('cleanup', () => cleanTables(db))
+  before('cleanup', () => helpers.cleanTables(db))
 
-  afterEach('cleanup', () => cleanTables(db))
+  afterEach('cleanup', () => helpers.cleanTables(db))
 
 
   it('GET / responds with 200 containing "Hello, world!"', () => {

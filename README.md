@@ -30,10 +30,10 @@ timezone = 'UTC'
 #timezone_abbreviations = 'Default'     # Select the set of available time zone
 ```
 
-<!-- ## Sample Data
+## Sample Data
 
-- To seed the database for development: `psql -U menuful -d menuful -a -f seeds/seed.menuful_tables.sql`
-- To clear seed data: `psql -U menuful -d menuful -a -f seeds/trunc.menuful_tables.sql` -->
+- To seed the database for development: `psql -U fuudi -d fuudi -a -f seeds/seed.fuudi_tables.sql`
+- To clear seed data: `psql -U fuudi -d fuudi -a -f seeds/trunc.fuudi_tables.sql`
 
 ## Scripts
 
