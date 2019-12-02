@@ -44,7 +44,7 @@ describe('Menu Endpoints', function() {
         )
       )
 
-      it('responds with 200 and all of the menu items', () => {
+      it.only('responds with 200 and all of the menu items', () => {
         const expectedMenu = testMenuItems.map(menuItem =>
           helpers.makeExpectedMenu(
             testUsers,
