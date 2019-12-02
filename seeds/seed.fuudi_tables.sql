@@ -31,8 +31,18 @@ VALUES
 INSERT INTO fuudi_menu (title, image, user_id, locations_served,
   payment_type, description)
 VALUES
-  ('Hand-Painted Rubber Ducky', 'https://loremflickr.com/750/300/landscape?random=1', 1, 'San Francisco', 'Cash', 'This ducky has been hand-painted and is now art. Therefore it is useless and cannot be put in water.'),
-  ('Cloning Machine', 'https://loremflickr.com/750/300/landscape?random=2', 2, 'Oakland', 'Credit', '100% guaranteed to occasionally work every time! Requires a 167.23v power outlet or a dragonscale battery (obtained separately by solving a riddle).');
+  ('Authentic Chinese Noodle Soup!', 'https://loremflickr.com/750/300/landscape?random=1', 1, 'San Francisco', 'Cash', 'Hand-made beef noodle soup.'),
+  ('Austrian Wienerschnitzel', 'https://loremflickr.com/750/300/landscape?random=2', 2, 'Marin', 'Cash', 'Once you have it - you''ll be back. Now get in the choppa and order.'),
+  ('Indian Tandoori Chicken', 'https://loremflickr.com/750/300/landscape?random=3', 3, 'Fremont', 'Cash/Credit', 'Straight from my mom''s kitchen. Free naan with every order.'),
+  ('PIZZA!!', 'https://loremflickr.com/750/300/landscape?random=4', 1, 'Oakland', 'Cash', 'Classic deep dish.'),
+  ('Hong Kong Egg Tart', 'https://loremflickr.com/750/300/landscape?random=5', 2, 'Daly City', 'Cash', 'Best egg tart OK.'),
+  ('Enchiladas', 'https://loremflickr.com/750/300/landscape?random=6', 3, 'Hayward', 'Cash/Credit', 'Hola! Te gusta enchiladas?'),
+  ('Enchiladas', 'https://loremflickr.com/750/300/landscape?random=7', 4, 'Hayward', 'Cash/Credit', 'Hola! Te gusta enchiladas?'),
+  ('Half Eatn Breakfast', 'https://loremflickr.com/750/300/landscape?random=8', 5, 'LA', 'Cash/Credit', 'It''s still good. Sorta.'),
+  ('Vegan Meatballs', 'https://loremflickr.com/750/300/landscape?random=9', 6, 'San Jose', 'Cash/Credit', 'Homemade and guaranteed meat free.'),
+  ('Polish Style Goulash', 'https://loremflickr.com/750/300/landscape?random=10', 1, 'San Diego', 'Cash', '100 year old family recipe delivered right to your door.'),
+  ('Hand-Painted Rubber Ducky', 'https://loremflickr.com/750/300/landscape?random=11', 1, 'San Francisco', 'Cash', 'This ducky has been hand-painted and is now art. Therefore it is useless and cannot be put in water.'),
+  ('Cloning Machine', 'https://loremflickr.com/750/300/landscape?random=12', 2, 'Oakland', 'Credit', '100% guaranteed to occasionally work every time! Requires a 167.23v power outlet or a dragonscale battery (obtained separately by solving a riddle).');
 
 INSERT INTO fuudi_reviews (
   text,
@@ -55,25 +65,25 @@ INSERT INTO fuudi_reviews (
   (
     'All the other reviewers are obviously insane, but this thing is actually pretty amazing.',
     5,
-    1,
+    6,
     4
   ),
   (
     'When life gives you lemons, trade them for this thing.',
     4,
-    1,
+    4,
     5
   ),
   (
     'This cured my psoriasis, but left me unable to tell the difference between the taste of squash and the concept of increasing.',
     3,
-    2,
+    9,
     6
   ),
   (
     'I think I swallowed a bug.',
     1,
-    2,
+    4,
     1
   ),
   (
@@ -91,7 +101,7 @@ INSERT INTO fuudi_reviews (
   (
     'I heard about this one time at band camp.',
     3,
-    2,
+    10,
     4
   ),
   (
@@ -115,7 +125,7 @@ INSERT INTO fuudi_reviews (
   (
     'Great holiday present for extraterrestrials (only the kind with the lightbulb heads).',
     4,
-    2,
+    12,
     2
   ),
   (
@@ -145,7 +155,7 @@ INSERT INTO fuudi_reviews (
   (
     'This would not fit inside the cabin of my horse-and-buggy, but it was a useful bribe after the string cheese incident.',
     4,
-    2,
+    7,
     1
   ),
   (
@@ -157,7 +167,7 @@ INSERT INTO fuudi_reviews (
   (
     'Octopii give it eight tentacles up!',
     5,
-    2,
+    7,
     4
   );
 
