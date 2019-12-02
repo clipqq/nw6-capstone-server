@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 const config = require('../config')
+const bcrypt = require('bcryptjs')
 
 const AuthService = {
   getUserWithUserName(db, user_name) {
@@ -8,6 +9,9 @@ const AuthService = {
         user_name
       })
       .first()
+  },
+  comparePasswords(password, hash) {
+    return bcrypt.compare(password, hash)
   },
   createJwt(subject, payload) {
     return jwt.sign(payload, config.JWT_SECRET, {

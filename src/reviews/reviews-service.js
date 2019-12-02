@@ -49,7 +49,7 @@ const ReviewsService = {
       id: review.id,
       rating: review.rating,
       text: xss(review.text),
-      menu_item_id: review.menu_item_id,
+      thing_id: review.thing_id,
       date_created: review.date_created,
       user: review.user || {},
     }

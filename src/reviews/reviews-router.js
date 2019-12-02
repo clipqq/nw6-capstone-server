@@ -10,23 +10,21 @@ const jsonBodyParser = express.json()
 
 reviewsRouter
   .route('/')
-  .post(jsonBodyParser, (req, res, next) => {
+  .post(requireAuth, jsonBodyParser, (req, res, next) => {
     const {
       menu_item_id,
       rating,
-      text,
-      user_id
+      text
     } = req.body
     const newReview = {
       menu_item_id,
       rating,
-      text,
-      user_id
+      text
     }
 
     // UNCOMMENT LINE BELOW AND DELETE ABOVE `USER_ID` ABOVE WHEN AUTHENTICATION IS WORKING
     // UNCOMMENT `.SET AUTH` IN REVIEWS TEST
-    // newReview.user_id = req.user.id
+    newReview.user_id = req.user.id
 
     for (const [key, value] of Object.entries(newReview))
       if (value == null)

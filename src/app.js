@@ -27,6 +27,7 @@ if (NODE_ENV !== 'production') {
 const menuRouter = require('../src/menu/menu-router')
 const usersRouter = require('../src/users/users-router')
 const reviewsRouter = require('../src/reviews/reviews-router')
+const authRouter = require('./auth/auth-router')
 
 const app = express()
 
@@ -45,6 +46,7 @@ app.get('/', (req, res) => {
 app.use('/menu', menuRouter)
 app.use('/users', usersRouter)
 app.use('/reviews', reviewsRouter)
+app.use('/auth', authRouter)
 
 app.use(function errorHandler(error, req, res, next) {
   let response
