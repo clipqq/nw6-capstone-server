@@ -44,12 +44,11 @@ describe('Menu Endpoints', function() {
         )
       )
 
-      it.only('responds with 200 and all of the menu items', () => {
+      it('responds with 200 and all of the menu items', () => {
         const expectedMenu = testMenuItems.map(menuItem =>
           helpers.makeExpectedMenu(
             testUsers,
-            menuItem,
-            testReviews,
+            menuItem
           )
         )
         return supertest(app)
@@ -96,7 +95,7 @@ describe('Menu Endpoints', function() {
         return supertest(app)
           .get(`/menu/${menuItemId}`)
           .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
-          .expect(404, { error: `Menu doesn't exist` })
+          .expect(404, { error: `Menu item doesn't exist` })
       })
     })
 
@@ -164,7 +163,7 @@ describe('Menu Endpoints', function() {
         return supertest(app)
           .get(`/menu/${menuItemId}/reviews`)
           .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
-          .expect(404, { error: `Menu doesn't exist` })
+          .expect(404, { error: `Menu item doesn't exist` })
       })
     })
 
@@ -180,14 +179,14 @@ describe('Menu Endpoints', function() {
 
       it('responds with 200 and the specified reviews', () => {
         const menuItemId = 1
-        const expectedComments = helpers.makeExpectedMenuComments(
+        const expectedReview = helpers.makeExpectedMenuReviews(
           testUsers, menuItemId, testReviews
         )
 
         return supertest(app)
           .get(`/menu/${menuItemId}/reviews`)
           .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
-          .expect(200, expectedComments)
+          .expect(200, expectedReview)
       })
     })
   })

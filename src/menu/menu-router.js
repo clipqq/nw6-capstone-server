@@ -9,7 +9,7 @@ menuRouter
   .get((req, res, next) => {
     MenuService.getAllMenuItems(req.app.get('db'))
       .then(menu => {
-        res.json(menu)
+        res.json(MenuService.serializeMenuItems(menu))
       })
       .catch(next)
   })
@@ -31,7 +31,7 @@ menuRouter.route('/:menu_item_id/reviews/')
       req.params.menu_id
     )
       .then(reviews => {
-        res.json(reviews)
+        res.json(MenuService.serializeMenuReviews(reviews))
       })
       .catch(next)
   })

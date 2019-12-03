@@ -57,8 +57,8 @@ const MenuService = {
       .groupBy('review.id', 'user.id')
   },
 
-  serializeMenuItem(menuItem) {
-    return menuItem.map(this.serializeMenu)
+  serializeMenuItems(menuItem) {
+    return menuItem.map(this.serializeMenuItem)
   },
 
   serializeMenuItem(menuItem) {

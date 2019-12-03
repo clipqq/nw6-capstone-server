@@ -291,6 +291,7 @@ function seedMenuTables(db, users, menuItems, reviews = []) {
     return db.transaction(async trx => {
         await seedUsers(trx, users)
         await trx.into('fuudi_menu').insert(menuItems)
+        await trx.into()
         await trx.raw(
             `SELECT setval('fuudi_menu_id_seq', ?)`,
             [menuItems[menuItems.length - 1].id],
