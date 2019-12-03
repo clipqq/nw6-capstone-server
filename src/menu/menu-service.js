@@ -4,7 +4,6 @@ const Treeize = require('treeize')
 const MenuService = {
   getAllMenuItems(db) {
     return db
-      .from('fuudi_menu AS menu-item')
       .select(
         'menu-item.id',
         'menu-item.title',
@@ -19,6 +18,7 @@ const MenuService = {
           `AVG(review.rating) AS average_review_rating`
         ),
       )
+      .from('fuudi_menu AS menu-item')
       .leftJoin(
         'fuudi_reviews AS review',
         'menu-item.id',

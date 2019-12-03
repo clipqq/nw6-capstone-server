@@ -25,7 +25,7 @@ describe('Menu Endpoints', function() {
 
   afterEach('cleanup', () => helpers.cleanTables(db))
 
-  describe(`GET /menu`, () => {
+  describe.only(`GET /menu`, () => {
     context(`Given no menu items`, () => {
       it(`responds with 200 and an empty list`, () => {
         return supertest(app)

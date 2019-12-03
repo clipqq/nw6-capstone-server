@@ -28,7 +28,7 @@ menuRouter.route('/:menu_item_id/reviews/')
   .get((req, res, next) => {
     MenuService.getReviewsForMenuItem(
       req.app.get('db'),
-      req.params.menu_id
+      req.params.menu_item_id
     )
       .then(reviews => {
         res.json(MenuService.serializeMenuReviews(reviews))

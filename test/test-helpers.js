@@ -20,6 +20,7 @@ function makeUsersArray() {
             nickname: 'TU1',
             password: 'password',
             date_created: '2029-01-22T16:28:32.615Z',
+            date_modified: '2029-01-22T16:28:32.615Z'
         },
         {
             id: 2,
@@ -28,6 +29,7 @@ function makeUsersArray() {
             nickname: 'TU2',
             password: 'password',
             date_created: '2029-01-22T16:28:32.615Z',
+            date_modified: '2029-01-22T16:28:32.615Z'
         },
         {
             id: 3,
@@ -36,6 +38,7 @@ function makeUsersArray() {
             nickname: 'TU3',
             password: 'password',
             date_created: '2029-01-22T16:28:32.615Z',
+            date_modified: '2029-01-22T16:28:32.615Z'
         },
         {
             id: 4,
@@ -44,6 +47,7 @@ function makeUsersArray() {
             nickname: 'TU4',
             password: 'password',
             date_created: '2029-01-22T16:28:32.615Z',
+            date_modified: '2029-01-22T16:28:32.615Z'
         },
     ]
 }
@@ -182,23 +186,23 @@ function makeExpectedMenu(users, menu, reviews = []) {
         date_created: menu.date_created,
         number_of_reviews,
         average_review_rating,
-        user: {
-            id: user.id,
-            user_name: user.user_name,
-            full_name: user.full_name,
-            nickname: user.nickname,
-            date_created: user.date_created,
-        },
+        "user:id": user.id,
+        "user:user_name": user.user_name,
+        "user:full_name": user.full_name,
+        "user:nickname": user.nickname,
+        "user:date_created": user.date_created,
+        "user:date_modified": user.date_modified
     }
 }
 
 function calculateAverageReviewRating(reviews) {
+    console.log(`reviewslength`,reviews.length)
     if (!reviews.length) return 0
 
     const sum = reviews
         .map(review => review.rating)
         .reduce((a, b) => a + b)
-
+    console.log(`sum `,sum)
     return Math.round(sum / reviews.length)
 }
 
@@ -291,7 +295,6 @@ function seedMenuTables(db, users, menuItems, reviews = []) {
     return db.transaction(async trx => {
         await seedUsers(trx, users)
         await trx.into('fuudi_menu').insert(menuItems)
-        await trx.into()
         await trx.raw(
             `SELECT setval('fuudi_menu_id_seq', ?)`,
             [menuItems[menuItems.length - 1].id],
