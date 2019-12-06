@@ -62,7 +62,8 @@ createMealRouter
           .then(menu => {
             res
               .status(201)
-              .location(path.posix.join(req.origin, `/menu/${menu.id}`))
+              // .location(path.posix.join(req.origin, `/menu/${menu.id}`))
+              .location(path.posix.join(req.originalUrl, `/${menu.id}`))
           })
       })
       .catch(next)
