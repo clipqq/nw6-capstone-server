@@ -3,8 +3,8 @@
 ## Setting Up
 
 - Install dependencies: `npm install`
-- Create development and test databases: `createdb menuful`, `createdb menuful-test`
-- Create database user: `createuser menuful`
+- Create development and test databases: `createdb fuudi`, `createdb fuudi-test`
+- Create database user: `createuser fuudi`
 - Grant privileges to new user in `psql`:
   - `GRANT ALL PRIVILEGES ON DATABASE "fuudi" TO "fuudi";`
   - `GRANT ALL PRIVILEGES ON DATABASE "fuudi_test" TO "fuudi";`
@@ -39,3 +39,20 @@ timezone = 'UTC'
 
 - Start application for development: `npm run dev`
 - Run tests: `npm test`
+
+## Features In-Progress
+
+1. DONE -- Require Auth on `/create-meal` endpoint
+2. Redirect user to Reviews page upon successful creation of new meal
+3. Make `Order Meal` button on Menu Reviews page
+4. Hook up button to server-side function that inserts `menu_item_id` to user's cart in `fuudi_cart`
+5. Make Cart page that displays Menu Items for the user that is logged in
+6. Make Delete button on User's Cart page
+7. Hook up Delete button to server-side function that deletes by `menu_item_id` in `fuudi_cart`
+8. 
+
+## Known Bugs
+
+- FIXED -- ID was hardcoded in seed instead of auto serialized -- New meal creation broken, error on ID not being unique
+- Reviews not sorted oldest to newest
+- Client-side error doesn't clear on page reload: `There was an error! Oh no!`

@@ -2,11 +2,10 @@ const AuthService = require('../auth/auth-service')
 
 function requireAuth(req, res, next) {
     const authToken = req.get('Authorization') || ''
-
     let bearerToken
     if (!authToken.toLowerCase().startsWith('bearer ')) {
         return res.status(401).json({
-            error: 'Unauthorized request'
+            error: `Unauthorized request BAD TOKEN ${authToken}`
         })
     } else {
         bearerToken = authToken.slice(7, authToken.length)
@@ -22,7 +21,7 @@ function requireAuth(req, res, next) {
             .then(user => {
                 if (!user)
                     return res.status(401).json({
-                        error: 'Unauthorized request'
+                        error: 'Unauthorized request NO USER'
                     })
                 req.user = user
                 next()
@@ -33,7 +32,7 @@ function requireAuth(req, res, next) {
             })
     } catch (error) {
         res.status(401).json({
-            error: 'Unauthorized request'
+            error: 'Unauthorized request SOME ERROR'
         })
     }
 }
