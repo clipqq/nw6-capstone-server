@@ -45,10 +45,10 @@ timezone = 'UTC'
 1. DONE -- Require Auth on `/create-meal` endpoint
 2. Redirect user to Reviews page upon successful creation of new meal
 3. Make `Order Meal` button on Menu Reviews page
-4. Hook up button to server-side function that inserts `menu_item_id` to user's cart in `fuudi_cart`
+4. Hook up button to server-side function that inserts `menu_item_id` to user's order in `fuudi_orders`
 5. Make Cart page that displays Menu Items for the user that is logged in
-6. Make Delete button on User's Cart page
-7. Hook up Delete button to server-side function that deletes by `menu_item_id` in `fuudi_cart`
+6. Make Delete button on user's order page
+7. Hook up Delete button to server-side function that deletes by `menu_item_id` in `fuudi_orders`
 8. 
 
 ## Known Bugs
