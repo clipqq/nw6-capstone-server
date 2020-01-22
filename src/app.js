@@ -24,12 +24,6 @@ if (NODE_ENV !== 'production') {
   }));
 }
 
-const menuRouter = require('../src/menu/menu-router')
-const usersRouter = require('../src/users/users-router')
-const reviewsRouter = require('../src/reviews/reviews-router')
-const authRouter = require('./auth/auth-router')
-const createMealRouter = require('./create-meal/create-meal-router')
-const ordersRouter = require('../src/orders/orders-router')
 
 const app = express()
 
@@ -45,12 +39,6 @@ app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
 
-app.use('/menu', menuRouter)
-app.use('/users', usersRouter)
-app.use('/reviews', reviewsRouter)
-app.use('/auth', authRouter)
-app.use('/create-meal', createMealRouter)
-app.use('/orders', ordersRouter)
 
 app.use(function errorHandler(error, req, res, next) {
   let response

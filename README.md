@@ -1,13 +1,13 @@
-# Fuudi Server
+# Server Side
 
 ## Setting Up
 
 - Install dependencies: `npm install`
-- Create development and test databases: `createdb fuudi`, `createdb fuudi-test`
-- Create database user: `createuser fuudi`
+- Create development and test databases: `createdb PLACEHOLDER_DB`, `createdb PLACEHOLDER_DB_TEST`
+- Create database user: `createuser USER_PLACEHOLDER`
 - Grant privileges to new user in `psql`:
-  - `GRANT ALL PRIVILEGES ON DATABASE "fuudi" TO "fuudi";`
-  - `GRANT ALL PRIVILEGES ON DATABASE "fuudi_test" TO "fuudi";`
+  - `GRANT ALL PRIVILEGES ON DATABASE "PLACEHOLDER_DB" TO "USER_PLACEHOLDER";`
+  - `GRANT ALL PRIVILEGES ON DATABASE "PLACEHOLDER_test" TO "PLACEHOLDER_TEST";`
 - Prepare environment file: `cp example.env .env`
 - Replace values in `.env` with your custom values.
 - Bootstrap development database: `npm run migrate`
@@ -32,9 +32,9 @@ timezone = 'UTC'
 
 ## Sample Data
 
-- To seed the database for development: `psql -U fuudi -d fuudi -a -f seeds/seed.fuudi_tables.sql`
-- To clear seed data: `psql -U fuudi -d fuudi -a -f seeds/trunc.fuudi_tables.sql`
-- To seed Heroku with data (replace postgres URL with your Heroku URI): `psql -U fuudi -d postgres://ncfuvjkvpxjvsj:4d58e0f44dfdddf5a82636b4155c7adfe6c25b12a8b517bcf712b64b70be3e7a@ec2-174-129-255-37.compute-1.amazonaws.com:5432/d5vd5fdg9njarh -a -f seeds/seed.fuudi_tables.sql`
+- To seed the database for development: `psql -U USER_PLACEHOLDER -d PLACEHOLDER_DB -a -f seeds/seed.PLACEHOLDER_TABLES.sql`
+- To clear seed data: `psql -U USER_PLACEHOLDER -d PLACEHOLDER_DB -a -f seeds/trunc.PLACEHOLDER_TABLES.sql`
+- To seed Heroku with data (replace postgres URL with your Heroku URI): `psql -U USER_PLACEHOLDER -d postgres://ncfuvjkvpxjvsj:4d58e0f44dfdddf5a82636b4155c7adfe6c25b12a8b517bcf712b64b70be3e7a@ec2-174-129-255-37.compute-1.amazonaws.com:5432/d5vd5fdg9njarh -a -f seeds/seed.PLACEHOLDER_TABLES.sql`
 
 ## Scripts
 
@@ -43,17 +43,5 @@ timezone = 'UTC'
 
 ## Features In-Progress
 
-1. DONE -- Require Auth on `/create-meal` endpoint
-2. Redirect user to Reviews page upon successful creation of new meal
-3. Make `Order Meal` button on Menu Reviews page
-4. Hook up button to server-side function that inserts `menu_item_id` to user's order in `fuudi_orders`
-5. Make Cart page that displays Menu Items for the user that is logged in
-6. Make Delete button on user's order page
-7. Hook up Delete button to server-side function that deletes by `menu_item_id` in `fuudi_orders`
-8. 
 
 ## Known Bugs
-
-- FIXED -- ID was hardcoded in seed instead of auto serialized -- New meal creation broken, error on ID not being unique
-- Reviews not sorted oldest to newest
-- Client-side error doesn't clear on page reload: `There was an error! Oh no!`

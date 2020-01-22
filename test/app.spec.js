@@ -27,14 +27,4 @@ describe('app', () => {
       .expect(200, 'Hello, world!')
   })
 
-  context(`Given no menu`, () => {
-    it(`responds with 200 and an empty list`, () => {
-      return supertest(app)
-        .get('/menu')
-        .expect(200, [])
-    })
-  })
-
-
-
 })
