@@ -1,0 +1,4 @@
+ALTER TABLE tables
+  DROP COLUMN IF EXISTS user_id;
+
+DROP TABLE IF EXISTS tables;
