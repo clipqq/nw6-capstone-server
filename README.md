@@ -1,5 +1,35 @@
 # Server Side
 
+## User Endpoints
+
+Post new User
+http://localhost:8000/api/user
+Pass user_name, password, and user_email into the request body as JSON.
+
+Login to existing user account
+http://localhost:8000/api/auth/login
+Pass user_name, and password into the request bady as JSON.
+
+## Data Endpoints
+
+Get all tables
+http://localhost:8000/api/data
+Pass user_name into get request header to return a list of all persisted tables.
+
+Post new table
+http://localhost:8000/api/data
+Pass user_name and the new table_name into post request headers and pass the table data as JSON in the request body.
+
+Get specific table
+http://localhost:8000/api/data/:table_id
+Make a get request with the table_id passed as a param inorder to return a specific table.
+
+
+Delete table
+http://localhost:8000/api/data/:table_id
+Make a delete request with the table_id passed as a param inorder to delete a table.
+
+
 ## Setting Up
 
 - Install dependencies: `npm install`

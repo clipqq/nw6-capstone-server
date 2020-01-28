@@ -4,9 +4,10 @@ const morgan = require('morgan')
 const cors = require('cors')
 const helmet = require('helmet')
 const winston = require('winston')
-const {
-  NODE_ENV
-} = require('./config')
+const { NODE_ENV } = require('./config')
+const authRouter = require('./auth/auth-router')
+const userRouter = require('./user/user-router')
+const dataRouter = require('./data/data-router')
 
 const logger = winston.createLogger({
   level: 'info',
@@ -39,6 +40,9 @@ app.get('/', (req, res) => {
   res.send('Hello, world!')
 })
 
+app.use('/api/auth', authRouter)
+app.use('/api/user', userRouter)
+app.use('/api/data', dataRouter)
 
 app.use(function errorHandler(error, req, res, next) {
   let response
