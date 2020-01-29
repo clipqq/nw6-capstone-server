@@ -28,7 +28,12 @@ dataRouter
 
   .post(jsonBodyParser, (req, res, next) => {
     const { user_name, table_name } = req.headers;
+    
     const data = JSON.stringify(req.body);
+
+    if(!user_name || !table_name) {
+      return res.status(400).send({ message: "Please pass both the user_name and the future table_name as headers when posting a new table." });
+    }
 
     UserService.getUserId(req.app.get("db"), user_name)
       .then(user_id => {
@@ -66,7 +71,6 @@ dataRouter
   })
 
   .get((req, res) => {
-    console.log(res.table)
     res.status(200).json(res.table)
   })
   
