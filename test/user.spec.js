@@ -7,7 +7,6 @@ describe.only("Users Endpoints", function() {
   let db;
 
   const { testUsers } = helpers.makeTablesFixtures();
-  //////
   const testUser = testUsers[0];
 
   before("make knex instance", () => {
