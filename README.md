@@ -14,7 +14,7 @@ Pass user_name, and password into the request bady as JSON.
 
 Get all tables
 http://localhost:8000/api/data
-Pass user_name into get request header to return a list of all persisted tables.
+Pass user_id into get request header to return a list of all persisted tables.
 
 Post new table
 http://localhost:8000/api/data

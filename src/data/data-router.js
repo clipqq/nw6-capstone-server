@@ -1,6 +1,5 @@
 const express = require("express");
 const DataService = require("./data-service");
-const UserService = require("../user/user-service");
 
 const dataRouter = express.Router();
 const jsonBodyParser = express.json();
@@ -9,20 +8,12 @@ dataRouter
   .route("/")
 
   .get((req, res, next) => {
-    const user_name = req.headers.user_name;
-    UserService.getUserId(req.app.get("db"), user_name)
-      .then(userInfo => {
-        user_id = userInfo.id;
+    const user_id = req.headers.user_id;
         DataService.getAllUserTables(req.app.get("db"), user_id).then(
           tables => {
-            // let tableNames = [];
-            // for (let i = 0; i < tables.length; i++) {
-            //   tableNames.push(tables[i].table_name);
-            // }
             res.json(tables);
           }
-        );
-      })
+        )
       .catch(next);
   })
 
