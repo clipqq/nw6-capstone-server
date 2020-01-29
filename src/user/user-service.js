@@ -5,9 +5,9 @@ const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*
 const UserService = {
   getUserId(db, user_name) {
     return db("users")
-    .select('id')
-    .where('user_name', user_name)
-    .first()
+      .select("id")
+      .where("user_name", user_name)
+      .first();
   },
   hasUserWithUserName(db, user_name) {
     return db("users")
@@ -17,9 +17,9 @@ const UserService = {
   },
   hasUserWithUserEmail(db, user_email) {
     return db("users")
-    .where({ user_email })
-    .first()
-    .then(user => !!user)
+      .where({ user_email })
+      .first()
+      .then(user => !!user);
   },
   insertUser(db, newUser) {
     return db

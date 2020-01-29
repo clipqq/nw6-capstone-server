@@ -8,7 +8,7 @@ Pass user_name, password, and user_email into the request body as JSON.
 
 Login to existing user account
 http://localhost:8000/api/auth/login
-Pass user_name, and password into the request bady as JSON. This will return a auth token and the users id that you will need for making requests to data endpoints.
+Pass user_name, and password into the request bady as JSON. This will return an auth token and the users id that you will need for making requests to data endpoints.
 
 ## Data Endpoints
 
