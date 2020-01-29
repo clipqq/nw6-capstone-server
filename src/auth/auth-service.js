@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs')
 
 const AuthService = {
   getUserWithUserName(db, user_name) {
-    return db('fuudi_users')
+    return db('users')
       .where({
         user_name
       })

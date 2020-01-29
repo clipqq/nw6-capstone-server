@@ -18,19 +18,16 @@ dataRouter
   })
 
   .post(jsonBodyParser, (req, res, next) => {
-    const { user_name, table_name } = req.headers;
+    const { user_id, table_name } = req.headers;
     
     const data = JSON.stringify(req.body);
 
-    if(!user_name || !table_name) {
-      return res.status(400).send({ message: "Please pass both the user_name and the future table_name as headers when posting a new table." });
+    if(!user_id || !table_name) {
+      return res.status(400).send({ message: "Please pass both the user_id and the future table_name as headers when posting a new table." });
     }
-
-    UserService.getUserId(req.app.get("db"), user_name)
-      .then(user_id => {
         const newDataset = {
           data: data,
-          user_id: user_id.id,
+          user_id: user_id,
           table_name: table_name
         };
 
@@ -38,8 +35,7 @@ dataRouter
           user => {
             res.status(201).send({ message: "Successful Upload" });
           }
-        );
-      })
+        )
       .catch(next);
   });
 
