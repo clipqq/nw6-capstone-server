@@ -27,8 +27,8 @@ authRouter.post("/login", jsonBodyParser, (req, res, next) => {
     if (value == null)
       return res.status(400).json({
         error: `Missing '${key}' in request body`
-      });
-
+      })
+    
   AuthService.getUserWithUserName(req.app.get("db"), loginUser.user_name)
     .then(dbUser => {
       if (!dbUser)
