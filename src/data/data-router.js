@@ -17,7 +17,7 @@ dataRouter
   })
 
   .post(jsonBodyParser, (req, res, next) => {
-    const { user_id, table_name } = req.headers;
+    const { user_id, table_name, table_type } = req.headers;
 
     const data = JSON.stringify(req.body);
 
@@ -32,7 +32,8 @@ dataRouter
     const newDataset = {
       data: data,
       user_id: user_id,
-      table_name: table_name
+      table_name: table_name,
+      table_type: table_type
     };
 
     return DataService.addJsonData(req.app.get("db"), newDataset)

@@ -20,6 +20,8 @@ Post new table
 http://localhost:8000/api/data
 Pass user_id and the new table_name into post request headers and pass the table data as JSON in the request body.
 
+You can also pass table_type as an optional header.
+
 Get specific table
 http://localhost:8000/api/data/:table_id
 Make a get request with the table_id passed as a param inorder to return a specific table.
