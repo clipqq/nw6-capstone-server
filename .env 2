@@ -1,0 +1,10 @@
+NODE_ENV=development
+PORT=9000
+DB_URL="postgresql://queen@localhost/data"
+TEST_DB_URL="postgresql://queen@localhost/queen-test"
+JWT_SECRET="hello"
+JWT_EXPIRY="24h"
+DEBUG=knex:query
+
+
+

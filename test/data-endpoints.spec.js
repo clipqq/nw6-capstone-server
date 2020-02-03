@@ -24,4 +24,14 @@ describe("app", () => {
       .get("/")
       .expect(200, "Hello, world!");
   });
+  it('GET / responds with "401 unauthorized, not logged in"', () => {
+    return supertest(app)
+      .get("/")
+      .expect(401, "401 unauthorized, not logged in");
+  });
+  it('GET / responds with "404 project not found"', () => {
+    return supertest(app)
+      .get("/78903")
+      .expect(404, "404 project not found");
+  });
 });

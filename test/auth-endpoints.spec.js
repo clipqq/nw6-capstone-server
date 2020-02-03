@@ -8,8 +8,8 @@ describe("Auth Endpoints", () => {
 
   const testUsers = helpers.makeUsersArray
   const testUser = testUsers[0]
-
-  console.log('TEST', testUser)
+  console.log('TESTusers, from auth-endpoint', testUsers)
+  console.log('TEST, from auth-endpoint', testUser)
   before("make knex instance", () => {
     db = knex({
       client: "pg",
@@ -35,8 +35,8 @@ describe("Auth Endpoints", () => {
 
     requiredFields.forEach(field => {
       const loginAttemptBody = {
-        user_name: testUser.user_name,
-        password: testUser.password,
+        user_name: testUsers.user_name,
+        password: testUsers.password,
       }
 
       it(`responds with 400 required error when '${field}' is missing`, () => {
