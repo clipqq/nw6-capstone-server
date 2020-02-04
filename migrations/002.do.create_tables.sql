@@ -1,6 +1,6 @@
 CREATE TABLE tables (
   id SERIAL PRIMARY KEY,
-  data TEXT NOT NULL,
+  data JSON NOT NULL,
   table_name TEXT NOT NULL,
   table_type TEXT
 );
