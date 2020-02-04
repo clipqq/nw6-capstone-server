@@ -8,7 +8,7 @@ Pass user_name, password, and user_email into the request body as JSON.
 
 Login to existing user account
 http://localhost:8000/api/auth/login
-Pass user_name, and password into the request bady as JSON. This will return an auth token and the users id that you will need for making requests to data endpoints.
+Pass user_name, and password into the request body as JSON. This will return an auth token and the users id that you will need for making requests to data endpoints.
 
 ## Data Endpoints
 
@@ -19,6 +19,8 @@ Pass user_id into get request header to return a list of all persisted tables.
 Post new table
 http://localhost:8000/api/data
 Pass user_id and the new table_name into post request headers and pass the table data as JSON in the request body.
+
+You can also pass table_type as an optional header.
 
 Get specific table
 http://localhost:8000/api/data/:table_id
