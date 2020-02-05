@@ -41,9 +41,9 @@ dataRouter
           .status(201)
           .location(path.posix.join(req.originalUrl, `/${table.id}`))
           .json({
-            message: 'Successfully uploaded.',
+            message: "Successfully uploaded.",
             location: `${req.originalUrl}/${table.id}`
-          })
+          });
       })
       .catch(next);
   });
