@@ -4,7 +4,7 @@ const REGEX_UPPER_LOWER_NUMBER_SPECIAL = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*
 
 const DataService = {
   addJsonData(db, newDataset) {
-    return db("tables").insert(newDataset);
+    return db("tables").insert(newDataset).returning('*').then(([table]) => table).then(table => DataService.getTableById(db, table.id))
   },
   deleteJsonData(db, table_id) {
     return db
