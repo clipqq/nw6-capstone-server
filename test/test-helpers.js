@@ -106,8 +106,8 @@ function makeTablesArray(users) {
 }
 
 function makeTablesFixtures() {
-  const testUsers = makeUsersArray();
-  const testTables = makeTablesArray(testUsers);
+  const testUsers = makeUsersArray( );
+  const testTables = makeTablesArray();
   return { testUsers, testTables };
 }
 
