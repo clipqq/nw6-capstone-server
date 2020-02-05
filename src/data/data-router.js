@@ -36,7 +36,6 @@ dataRouter
 
     return DataService.addJsonData(req.app.get("db"), newDataset)
       .then(table => {
-        console.log(table);
         res
           .status(201)
           .location(path.posix.join(req.originalUrl, `/${table.id}`))
