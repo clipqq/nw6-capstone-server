@@ -1,6 +1,6 @@
 const express = require("express");
 const DataService = require("./data-service");
-
+const path = require("path");
 const dataRouter = express.Router();
 const jsonBodyParser = express.json();
 
@@ -22,12 +22,10 @@ dataRouter
     const data = JSON.stringify(req.body);
 
     if (!user_id || !table_name) {
-      return res
-        .status(400)
-        .send({
-          message:
-            "Please pass both the user_id and the future table_name as headers when posting a new table."
-        });
+      return res.status(400).send({
+        message:
+          "Please pass both the user_id and the future table_name as headers when posting a new table."
+      });
     }
     const newDataset = {
       data: data,
@@ -37,8 +35,14 @@ dataRouter
     };
 
     return DataService.addJsonData(req.app.get("db"), newDataset)
-      .then(user => {
-        res.status(201).send({ message: "Successful Upload" });
+      .then(table => {
+        res
+          .status(201)
+          .location(path.posix.join(req.originalUrl, `/${table.id}`))
+          .json({
+            message: "Successfully uploaded.",
+            location: `${req.originalUrl}/${table.id}`
+          });
       })
       .catch(next);
   });
