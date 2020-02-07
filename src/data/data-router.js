@@ -65,6 +65,8 @@ dataRouter
       .catch(next);
   })
 
+  
+
   .get((req, res) => {
     res.status(200).json(res.table);
   })
