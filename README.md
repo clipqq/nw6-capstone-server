@@ -29,8 +29,20 @@ Make a get request with the table_id passed as a param inorder to return a speci
 
 Delete table
 http://localhost:8000/api/data/:table_id
-Make a delete request with the table_id passed as a param inorder to delete a table.
+Make a delete request with the table_id passed as a param in order to delete a table.
 
+Update table
+http://localhost:8000/api/data/:table_id
+Make a patch request with the table_id passed as a param and the new table_name or table_type passed in the body.
+
+EXAMPLE!
+
+PATCH http://localhost:8000/api/data/27
+body
+  {
+    "table_name": "new table name",
+	  "table_type": "new type"
+  }
 
 ## Setting Up
 
