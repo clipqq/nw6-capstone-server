@@ -67,6 +67,7 @@ timezone = 'UTC'
 - To seed the database for development: `psql -U USER_PLACEHOLDER -d PLACEHOLDER_DB -a -f seeds/seed.PLACEHOLDER_TABLES.sql`
 - To clear seed data: `psql -U USER_PLACEHOLDER -d PLACEHOLDER_DB -a -f seeds/trunc.PLACEHOLDER_TABLES.sql`
 - To seed Heroku with data (replace postgres URL with your Heroku URI): `psql -U USER_PLACEHOLDER -d postgres://ncfuvjkvpxjvsj:4d58e0f44dfdddf5a82636b4155c7adfe6c25b12a8b517bcf712b64b70be3e7a@ec2-174-129-255-37.compute-1.amazonaws.com:5432/d5vd5fdg9njarh -a -f seeds/seed.PLACEHOLDER_TABLES.sql`
+- To setup/update Heroku migration schema (replace postgres URL with your Heroku URI): `psql -U USER_PLACEHOLDER -d postgres://jdcsnuysxfirpr:e1d9285a61a3ccc5c9d54265e2320626506d9b7300f386550e13d732c1e582f4@ec2-107-22-216-151.compute-1.amazonaws.com:5432/dagfofq1ciq57u -a -f migrations/002.do.create_tables.sql`
 
 ## Scripts
 
