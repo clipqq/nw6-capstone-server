@@ -67,7 +67,7 @@ dataRouter
 
   .delete((req, res) => {
     const { table_id } = req.params;
-    DataService.deleteJsonData(req.app.get("db"), table_id);
+    DataService.deleteJsonData(req.app.get("db")\, table_id);
     res
       .status(200)
       .send({ message: `Successfully deleted table ${table_id}.` })
