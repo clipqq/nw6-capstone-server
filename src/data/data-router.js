@@ -65,7 +65,37 @@ dataRouter
       .catch(next);
   })
 
-  
+  .patch(jsonBodyParser, (req, res) => {
+    const { table_id } = req.params;
+    const { table_name, table_type } = req.body
+
+    let columnsToBeUpdated = {}
+
+    if(!table_name && !table_type) {
+      res.status(400).send({ message: `You must supply either a new table_name or a new table_type in order to update table information.` })
+    }
+    if(!table_name) {
+      columnsToBeUpdated = {
+        table_type: table_type
+      }
+    }
+    if(!table_type) {
+      columnsToBeUpdated = {
+        table_name: table_name
+      }
+    }
+    if(table_name && table_type) {
+      columnsToBeUpdated = {
+        table_name: table_name,
+        table_type: table_type
+      }
+    }
+    DataService.updateTable(req.app.get("db"), table_id, columnsToBeUpdated)
+    .then(updatedTable => {
+      res.status(201).send({ message: `Successfully updated table ${table_id}.`})
+    })
+
+  })
 
   .get((req, res) => {
     res.status(200).json(res.table);

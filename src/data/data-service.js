@@ -31,6 +31,14 @@ const DataService = {
       .select("*")
       .where("id", table_id)
       .first();
+  },
+  updateTable(db, table_id, newColumns) {
+    return db("tables")
+    .where("id", table_id)
+    .update(newColumns)
+    .returning("*")
+    .then(([table]) => table)
+    .then(table => DataService.getTableById(db, table.id));
   }
 };
 
