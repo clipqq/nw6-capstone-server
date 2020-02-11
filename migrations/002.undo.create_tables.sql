@@ -1,3 +1,5 @@
+TRUNCATE TABLE tables;
+
 ALTER TABLE tables
   DROP COLUMN IF EXISTS user_id;
 
