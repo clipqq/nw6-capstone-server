@@ -18,7 +18,7 @@ Pass user_id into get request header to return a list of all persisted tables.
 
 Post new table
 http://localhost:8000/api/data
-Pass user_id and the new table_name into post request headers and pass the table data as JSON in the request body.
+Pass user_id, table_name, and Authorization into post request headers and pass the table data as JSON in the request body.
 
 You can also pass table_type as an optional header.
 
@@ -29,11 +29,14 @@ Make a get request with the table_id passed as a param inorder to return a speci
 
 Delete table
 http://localhost:8000/api/data/:table_id
-Make a delete request with the table_id passed as a param in order to delete a table.
+Make a delete request with Authorization header and the table_id passed as a param in order to delete a table.
 
 Update table
 http://localhost:8000/api/data/:table_id
-Make a patch request with the table_id passed as a param and the new table_name or table_type passed in the body.
+Make a patch request with the Authorization header and the table_id passed as a param and the new table_name or table_type passed in the body.
+
+Authorizing protected endpoints.
+POST, PATCH and DELETE are protected endpoints. In order to access them you must pass Authorization as a header with the value of 'bearer ' + (THE TOKEN RECIEVED ON LOGIN)
 
 EXAMPLE!
 

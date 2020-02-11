@@ -3,6 +3,7 @@ const DataService = require("./data-service");
 const path = require("path");
 const dataRouter = express.Router();
 const jsonBodyParser = express.json();
+const { requireAuth } = require('../middleware/jwt-auth')
 
 dataRouter
   .route("/")
@@ -16,6 +17,9 @@ dataRouter
       .catch(next);
   })
 
+  dataRouter
+  .route("/")
+  .all(requireAuth)
   .post(jsonBodyParser, (req, res, next) => {
     const { user_id, table_name, table_type } = req.headers;
 
@@ -49,7 +53,7 @@ dataRouter
 
 dataRouter
   .route("/:table_id")
-
+  .all(requireAuth)
   .all((req, res, next) => {
     const { table_id } = req.params;
     DataService.getTableById(req.app.get("db"), table_id)
